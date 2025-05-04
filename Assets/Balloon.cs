@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class Balloon : MonoBehaviour
 {
-    [SerializeField] private BalloonPopEffect popEffectPrefab;
+    [SerializeField] private GameObject popEffectPrefab;
     
-    private Renderer balloonRenderer;
+    private SpriteRenderer balloonRenderer;
     private BallSpawner spawner;
     
     private void Start()
     {
-        balloonRenderer = GetComponent<Renderer>();
+        balloonRenderer = GetComponent<SpriteRenderer>();
         
         // Найти спаунер, чтобы уведомить его при уничтожении шарика
         spawner = FindObjectOfType<BallSpawner>();
@@ -21,12 +21,29 @@ public class Balloon : MonoBehaviour
         // Create pop effect
         if (popEffectPrefab != null)
         {
-            // Используем текущий цвет шарика из рендерера
+            // Используем текущий цвет шарика из SpriteRenderer
             Color currentColor = balloonRenderer != null ? 
-                balloonRenderer.material.color : Color.white;
+                balloonRenderer.color : Color.white;
             
-            BalloonPopEffect popEffect = Instantiate(popEffectPrefab);
-            popEffect.PopBalloon(transform.position, currentColor);
+            // Создаем эффект на позиции шарика
+            GameObject popEffectObj = Instantiate(popEffectPrefab, transform.position, Quaternion.identity);
+            
+            // Получаем компонент BalloonPopEffect
+            BalloonPopEffect popEffect = popEffectObj.GetComponent<BalloonPopEffect>();
+            
+            // Запускаем эффект с правильным цветом
+            if (popEffect != null)
+            {
+                popEffect.PopBalloon(transform.position, currentColor);
+                
+                // Удаляем эффект через время
+                Destroy(popEffectObj, 2f); // 2 секунды должно хватить для любого эффекта
+            }
+            else
+            {
+                // Если компонент BalloonPopEffect не найден, просто удаляем объект
+                Destroy(popEffectObj, 1f);
+            }
         }
         
         // Увеличиваем счет
