@@ -3,18 +3,16 @@ using UnityEngine;
 public class Balloon : MonoBehaviour
 {
     [SerializeField] private BalloonPopEffect popEffectPrefab;
-    [SerializeField] private Color balloonColor = Color.red;
     
     private Renderer balloonRenderer;
+    private BallSpawner spawner;
     
     private void Start()
     {
         balloonRenderer = GetComponent<Renderer>();
-        if (balloonRenderer != null)
-        {
-            // Set the balloon color
-            balloonRenderer.material.color = balloonColor;
-        }
+        
+        // Найти спаунер, чтобы уведомить его при уничтожении шарика
+        spawner = FindObjectOfType<BallSpawner>();
     }
     
     // Call this when crossbow bolt hits the balloon
@@ -23,34 +21,27 @@ public class Balloon : MonoBehaviour
         // Create pop effect
         if (popEffectPrefab != null)
         {
-            // Use the balloon's actual color from renderer if available
-            Color actualColor = balloonRenderer != null ? balloonRenderer.material.color : balloonColor;
+            // Используем текущий цвет шарика из рендерера
+            Color currentColor = balloonRenderer != null ? 
+                balloonRenderer.material.color : Color.white;
             
             BalloonPopEffect popEffect = Instantiate(popEffectPrefab);
-            popEffect.PopBalloon(transform.position, actualColor);
+            popEffect.PopBalloon(transform.position, currentColor);
+        }
+        
+        // Увеличиваем счет
+        if (ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.OnBalloonPopped();
+        }
+        
+        // Уведомляем спаунер об уничтожении шарика
+        if (spawner != null)
+        {
+            spawner.DecreaseBallCount();
         }
         
         // Destroy the balloon object
         Destroy(gameObject);
-    }
-    
-    // If you're using colliders/triggers to detect hits
-    private void OnCollisionEnter(Collision collision)
-    {
-        // Check if hit by crossbow bolt
-        if (collision.gameObject.CompareTag("CrossbowBolt"))
-        {
-            OnHit();
-        }
-    }
-    
-    // Alternative trigger-based detection
-    private void OnTriggerEnter(Collider other)
-    {
-        // Check if hit by crossbow bolt
-        if (other.CompareTag("CrossbowBolt"))
-        {
-            OnHit();
-        }
     }
 }
