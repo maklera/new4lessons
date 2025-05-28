@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa12894af4980e448eb2f697b5b58a1, type: 3}
   m_Name: Crossbow
   m_EditorClassIdentifier: 
-  weaponName: 
-  weaponSprite: {fileID: 0}
-  projectilePrefab: {fileID: 7806202314411038784, guid: ccf05ab6247547248b6bd40d801d31e2, type: 3}
+  weaponName: "\u0410\u0440\u0431\u0430\u043B\u0435\u0442"
+  weaponSprite: {fileID: -7012735815262577139, guid: 0fa147fd485ca3c4588683454b2ce541, type: 3}
+  spriteScale: 0.5
+  projectileData: {fileID: 11400000, guid: c2697ced7d1f2a746b54ec5f97aecf6a, type: 2}
   rotationSpeed: 5
   hasRecoil: 1
   recoilAmount: 0.1

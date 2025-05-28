@@ -20,13 +20,36 @@ public class AutomaticWeapon : WeaponData
             direction = Quaternion.Euler(0, 0, randomSpread) * direction;
         }
         
-        // Кастомный снаряд для автомата
-        GameObject projectile = Object.Instantiate(projectilePrefab, controller.firePoint.position, controller.firePoint.rotation);
+        // Создаем GameObject для снаряда
+        GameObject projectile = new GameObject("AutomaticProjectile");
+        projectile.transform.position = controller.firePoint.position;
+        projectile.transform.rotation = controller.firePoint.rotation;
         
-        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-        if (rb != null)
+        // Добавляем необходимые компоненты
+        Rigidbody2D rb = projectile.AddComponent<Rigidbody2D>();
+        SpriteRenderer sr = projectile.AddComponent<SpriteRenderer>();
+        CircleCollider2D col = projectile.AddComponent<CircleCollider2D>();
+        ProjectileController projectileController = projectile.AddComponent<ProjectileController>();
+        
+        // Устанавливаем спрайт, если он указан в projectileData
+        if (projectileData != null && projectileData.projectileSprite != null)
         {
+            sr.sprite = projectileData.projectileSprite;
+            
+            // Настраиваем базовые параметры снаряда
+            rb.gravityScale = projectileData.gravity;
+            col.radius = 0.1f;
+            projectile.transform.localScale = Vector3.one * projectileData.scale;
+            
+            // Инициализируем контроллер снаряда с измененным направлением
+            projectileController.Initialize(projectileData, direction);
+        }
+        else
+        {
+            // Если нет ProjectileData, импровизируем с базовыми настройками
             rb.AddForce(direction * projectileForce, ForceMode2D.Impulse);
+            sr.color = Color.yellow; // Базовый цвет для пуль автомата
+            Destroy(projectile, 5f); // Уничтожаем через 5 секунд если нет данных
         }
         
         // Увеличиваем отдачу при продолжительной стрельбе

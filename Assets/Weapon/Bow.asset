@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd73f18d9f071244dacc19fe7b293e9d, type: 3}
   m_Name: Bow
   m_EditorClassIdentifier: 
-  weaponName: 
-  weaponSprite: {fileID: 0}
-  projectilePrefab: {fileID: 0}
+  weaponName: "\u041B\u0443\u043A"
+  weaponSprite: {fileID: -2330210404196100892, guid: ee58e4c08ff6ed54c9874611dd67fb36, type: 3}
+  spriteScale: 0.5
+  projectilePrefab: {fileID: 2807746309915063199, guid: 51313276edb0a4a4cadb6b31b25418eb, type: 3}
   rotationSpeed: 5
   hasRecoil: 1
   recoilAmount: 0.1
   recoilDuration: 0.05
-  showAimLine: 1
+  showAimLine: 0
   aimLineLength: 10
   aimLineStartColor: {r: 1, g: 0, b: 0, a: 0.5}
   aimLineEndColor: {r: 1, g: 0, b: 0, a: 0.2}

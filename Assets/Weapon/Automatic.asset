@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e47cd90319b70479144e54b7c35a0e, type: 3}
   m_Name: Automatic
   m_EditorClassIdentifier: 
-  weaponName: 
-  weaponSprite: {fileID: 0}
-  projectilePrefab: {fileID: 0}
+  weaponName: "\u041F\u0443\u043B\u0435\u043C\u0451\u0442"
+  weaponSprite: {fileID: 2158036316799575934, guid: 42be2a9e692a277468b835ec4141e817, type: 3}
+  spriteScale: 1
+  projectilePrefab: {fileID: 1949304541809196362, guid: 6671eb0446867664a9c9761cb384aa6c, type: 3}
   rotationSpeed: 5
-  hasRecoil: 1
-  recoilAmount: 0.1
-  recoilDuration: 0.05
-  showAimLine: 1
+  hasRecoil: 0
+  recoilAmount: 0
+  recoilDuration: 0
+  showAimLine: 0
   aimLineLength: 10
   aimLineStartColor: {r: 1, g: 0, b: 0, a: 0.5}
   aimLineEndColor: {r: 1, g: 0, b: 0, a: 0.2}
@@ -30,10 +31,10 @@ MonoBehaviour:
   burstFire: 0
   burstCount: 3
   burstDelay: 0.1
-  shootSound: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 7f5109f075c59b54dab92a8db1a0ad8f, type: 3}
   usesAmmo: 1
   maxAmmo: 30
   reloadTime: 4
   autoReload: 1
   spread: 5
-  recoilIncrease: 0.1
+  recoilIncrease: 0

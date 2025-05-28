@@ -6,7 +6,8 @@ public class WeaponData : ScriptableObject
     [Header("Basic Settings")]
     public string weaponName;
     public Sprite weaponSprite;
-    public GameObject projectilePrefab;
+    public float spriteScale = 1f;
+    public ProjectileData projectileData; // Ссылка на тип снаряда
     
     [Header("Rotation & Animation")]
     public float rotationSpeed = 5f;

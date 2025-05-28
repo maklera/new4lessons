@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a123ada53da2df54c88c22ccc2cce2d7, type: 3}
+  m_Name: Arrow
+  m_EditorClassIdentifier: 
+  projectileName: "\u0421\u0442\u0440\u0435\u043B\u0430"
+  projectileSprite: {fileID: 5519384368986419482, guid: a7f69dc9ffdf1894e9fae5f11cc19cf6, type: 3}
+  scale: 0.5
+  colliderScale: 1
+  templatePrefab: {fileID: 6193328893621919079, guid: 2289c9c20fe7f0043bb3f68482d9c879, type: 3}
+  speed: 20
+  damage: 10
+  lifetime: 5
+  gravity: 0.3
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  stickToSurfaces: 1
+  stickDuration: 10
+  destroyOnImpact: 0
+  penetrateTargets: 0
+  maxPenetrations: 1
+  trailEffect: {fileID: 0}
+  impactEffect: {fileID: 0}
+  trailColor: {r: 1, g: 1, b: 1, a: 1}
+  trailWidth: 0.1
+  trailLifetime: 0.5
+  launchSound: {fileID: 8300000, guid: 41ca99cdb7b4b0a419c857aa25b16c40, type: 3}
+  impactSound: {fileID: 8300000, guid: 0f8d8f0e343ba2140b61e19541d6bd2f, type: 3}
+  flyingSound: {fileID: 0}
+  loopFlyingSound: 0
+  hasExplosion: 0
+  explosionRadius: 0
+  explosionDamage: 0
+  explosionEffect: {fileID: 0}
+  hasHoming: 0
+  homingStrength: 5
+  homingRange: 10
+  homingTarget: {fileID: 0}
+  pierceBalloons: 1
+  maxPiercings: 1
